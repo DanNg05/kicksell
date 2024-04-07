@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Formal shoes are listed here:</h1>
+  <% @shoes.each do |shoe| %>
+    <li>Name: <%= link_to shoe.name, shoe_path(shoe) %>, Price: <%= shoe.price %> AUD/per day</li>
+  <% end %>
+  <%= link_to "Do you have shoes for rent? Click here to create your post!", new_shoe_path %>
+</div>

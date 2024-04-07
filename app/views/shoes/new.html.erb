@@ -1,7 +1,12 @@
-<h1>Do you have shoes for rent? Add here!</h1>
-<%= simple_form_for(@shoe) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.submit class:"btn btn-primary" %>
+<div class="container">
+  <h1>Do you have shoes for rent? Add here!</h1>
+  <%= simple_form_for(@shoe) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :size, :collection => %w[4 5 6 7 8 9 10 11 12 13 14] %>
+      <%= f.input :category, :collection => %w[Luxury Casual Formal] %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.submit class:"btn btn-primary" %>
   <% end %>
+</div>

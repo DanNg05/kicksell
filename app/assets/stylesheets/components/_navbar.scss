@@ -13,3 +13,16 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-nav {
+  a {
+    color: rgb(41, 247, 5);
+    text-shadow: 1px 1px 1px rgba($color: grey, $alpha: 0.6);
+  }
+}
+.navbar-nav:hover {
+  a {
+    color: rgb(243, 46, 233);
+    text-shadow: 1px 1px 1px rgba($color: grey, $alpha: 1);
+  }
+}

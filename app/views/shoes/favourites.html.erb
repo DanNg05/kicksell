@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Your favourites list</h1>
+  <% @favourites.each do |favourite| %>
+    <% shoe = Shoe.find(favourite.shoe_id) %>
+    <% if favourite.user_id == current_user.id %>
+    <% shoe = Shoe.find(favourite.shoe_id) %>
+    <li>
+      <% if shoe.photos.first %>
+        <span><%= cl_image_tag shoe.photos.first.key, height: 300, width: 400, crop: :fill %></span>
+      <% end %>
+      <%= shoe.name %>
+    </li>
+    <% end %>
+    <%= link_to "❌", shoe_favourite_path(shoe, favourite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <% end %>
+</div>

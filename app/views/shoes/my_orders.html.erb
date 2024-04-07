@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Your history of orders:</h1>
+  <% current_user.orders.each do |order| %>
+    <% shoe = Shoe.find(order.shoe_id) %>
+    <li>
+      Name: <%= shoe.name %>
+      <br>
+      Size: <%= shoe.size %>
+      <br>
+      Order ID: <%= order.id %>
+      <br>
+      From: <%= order.from %>
+      <br>
+      To: <%= order.to %>
+    </li>
+  <% end %>
+</div>

@@ -16,12 +16,12 @@ class OrdersController < ApplicationController
   end
 
   def create
+    # raise
     @order = Order.new(order_params)
-    @order.user_id = current_user.id
     @shoe = Shoe.find(params[:shoe_id])
-    @order.shoe_id = @shoe.id
+
     if @order.save
-      redirect_to shoe_orders_path
+      redirect_to shoe_path(@shoe)
     else
       render :new
     end
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit()
+    params.require(:order).permit(:from, :to, :user_id, :shoe_id)
   end
 
   def order_list

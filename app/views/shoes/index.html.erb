@@ -1,11 +1,16 @@
-<h1>Welcome to our shoes marketplace, pick your favourite one here</h1>
+<div class="container">
+  <h1>Welcome to our shoes marketplace, pick your favourite one here</h1>
 
-<ul>
-  <% @shoes.each do |shoe| %>
-  <li>
-    <%= link_to shoe.name, shoe_path(shoe) %>
-  </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @shoes.each do |shoe| %>
+    <li>
+      <% if shoe.photos.first %>
+        <span><%= cl_image_tag shoe.photos.first.key, height: 300, width: 400, crop: :fill %></span>
+      <% end %>
+      <%= link_to shoe.name, shoe_path(shoe) %>
+    </li>
+    <% end %>
+  </ul>
 
-<%= link_to "Do you have shoes for rent? Click here to create your post!", new_shoe_path %>
+  <%= link_to "Do you have shoes for rent? Click here to create your post!", new_shoe_path %>
+</div>

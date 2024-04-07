@@ -1,9 +1,0 @@
-<h1>Order Summary for <%= @shoe.name %>:</h1>
-<ul>
-<% @orders.each do |order| %>
-  <% user = User.where(id: order.user_id) %>
-  <% if order.shoe_id == @shoe.id %>
-  <li>Order ID: <%= order.id %> from <%= user.first.first_name %> <%= user.first.last_name %></li>
-  <% end %>
-<% end %>
-</ul>

@@ -1,6 +1,11 @@
-<%= simple_form_for @shoe do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1>Need to change shoes details?</h1>
+  <%= simple_form_for(@shoe) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :size, :collection => %w[4 5 6 7 8 9 10 11 12 13 14] %>
+      <%= f.input :category, :collection => %w[Luxury Casual Formal] %>
+      <%= f.submit class:"btn btn-primary" %>
+  <% end %>
+</div>
