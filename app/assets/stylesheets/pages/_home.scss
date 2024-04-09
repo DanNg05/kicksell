@@ -1,6 +1,11 @@
 // Specific CSS for your home-page
+a {
+  text-decoration: none;
+}
 
-
+ul {
+  list-style-type: none;
+}
 
 .container-story{
    display: flex;

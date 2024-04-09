@@ -1,75 +1,92 @@
-<div class="container">
-  <h1>The details of <%= @shoe.name %>:</h1>
-  <ul>
-    <% if @shoe.photos %>
-      <% @shoe.photos.each do |photo| %>
-        <span><%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></span>
-      <% end %>
-    <% end %>
-    <li>Name: <%= @shoe.name %></li>
-    <li>Description: <%= @shoe.description %></li>
-    <li>Size: <%= @shoe.size %>US</li>
-    <li>Category: <%= @shoe.category %></li>
-    <li>Price: <%= @shoe.price %> AUD/day</li>
-    <li>Owner: <%= @user.first.first_name%></li>
-  </ul>
+<div class="shoe-show-container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 center">
+        <ul class="shoe-and-user mt-5">
+          <div class="photos">
+            <% if @shoe.photos %>
+              <% @shoe.photos.each do |photo| %>
+                <span class="mt-3"><%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "shoe-image" %></span>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="shoe-info">
+            <li>Name <span class="shoes-content"><%= @shoe.name %></span></li>
+            <li>Description <span class="shoes-content"><%= @shoe.description %></span></li>
+            <li>Size <span class="shoes-content"><%= @shoe.size %>US</span></li>
+            <li>Category <span class="shoes-content"><%= @shoe.category %></span></li>
+            <li>Price <span class="shoes-content"><%= @shoe.price %> AUD/day</span></li>
+            <li>Owner <span class="shoes-content"><%= @user.first.first_name%></span></li>
+            <% favourite = Favourite.where(shoe_id: @shoe.id, user_id: current_user.id) %>
+            <% if favourite == [] %>
+              <h2>Do you like this shoes?</h2>
+                <%= simple_form_for [@shoe, @favourite] do |f|%>
+                  <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
+                  <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
+                  <%= f.submit value: "💗" %>
+                <% end %>
+            <% else %>
+              <li class="favourites"><%= link_to favourites_path do%>
+                <%= "This shoes is in your favourites list" %>
+                <br>
+                <%= "click here to edit" %>
+                <% end %>
+              </li>
+            <% end %>
 
-  <% favourite = Favourite.where(shoe_id: @shoe.id, user_id: current_user.id) %>
-  <% if favourite == [] %>
-    <h2>Do you like this shoes?</h2>
-      <%= simple_form_for [@shoe, @favourite] do |f|%>
-        <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
-        <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
-        <%= f.submit value: "💗" %>
-      <% end %>
-  <% else %>
-    <%= link_to "This shoes is in your favourites list, click here to edit", favourites_path %>
-  <% end %>
+            <br>
+            <% if @shoe.user_id == current_user.id %>
+              <li class="edit-shoes"><%= link_to "EDIT SHOES DETAILS", edit_shoe_path(@shoe)%></li>
+              <br>
+              <li class="delete-shoes">
+                <%= link_to "DELETE SHOES",
+                shoe_path(@shoe),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                %>
+              </li>
+            <% else %>
+              <%= link_to "Do you want to rent them? Click here", new_shoe_order_path(@shoe) %>
+              <br>
+              <br>
+            <% end %>
+          </div>
+        </ul>
 
-  <br>
-  <% if @shoe.user_id == current_user.id %>
-    <%= link_to "Edit shoes details", edit_shoe_path(@shoe) %>
-    <br>
-    <%= link_to "Delete shoes",
-    shoe_path(@shoe),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-  <% else %>
-    <%= link_to "Do you want to rent them? Click here", new_shoe_order_path(@shoe) %>
-    <br>
-    <br>
-  <% end %>
-  <% if @shoe.orders != [] %>
-    <h2>List of orders for <%= @shoe.name %>:</h2>
-    <ul>
-      <% @shoe.orders.each do |order| %>
-        <% user = User.where(id: order.user_id) %>
-        <% if order.shoe_id == @shoe.id %>
-        <li>Order ID: <%= order.id %>
-        <br>
-        From <%= user.first.first_name %> <%= user.first.last_name %>
-        <br>
-        Renting period: <%= order.from %> to <%= order.to %>
-        <br>
-        </li>
+
+        <% if @shoe.orders != [] %>
+          <h2>List of orders for <%= @shoe.name %>:</h2>
+          <ul>
+            <% @shoe.orders.each do |order| %>
+              <% user = User.where(id: order.user_id) %>
+              <% if order.shoe_id == @shoe.id %>
+              <li>Order ID: <%= order.id %>
+              <br>
+              From <%= user.first.first_name %> <%= user.first.last_name %>
+              <br>
+              Renting period: <%= order.from %> to <%= order.to %>
+              <br>
+              </li>
+              <% end %>
+            <% end %>
+          </ul>
         <% end %>
-      <% end %>
-    </ul>
-  <% end %>
-  <br>
-  <% if @shoe.reviews != [] %>
-    <h2>List of references:</h2>
-    <ul>
-      <% @shoe.reviews.each do |review| %>
-        <li>
-        Content: <%= review.content %>
         <br>
-        Rating: <%= review.rating %>
-      </li>
-      <% end %>
-    </ul>
-  <% end %>
-  <% if @orders != [] %>
-  <%= link_to "Write your review!", new_order_review_path(@orders.last) %>
-  <% end %>
+        <% if @shoe.reviews != [] %>
+          <h2>List of references:</h2>
+          <ul>
+            <% @shoe.reviews.each do |review| %>
+              <li>
+              Content: <%= review.content %>
+              <br>
+              Rating: <%= review.rating %>
+            </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <% if @orders != [] %>
+        <%= link_to "Write your review!", new_order_review_path(@orders.last) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
