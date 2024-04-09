@@ -1,5 +1,5 @@
 .shoe-show-container {
-  background-color: rgba($color: grey, $alpha: 0.1)
+  background-color: rgba($color: grey, $alpha: 0.1);
 }
 .center {
   background-color: white;
@@ -18,10 +18,13 @@
 .shoe-image {
   width: 600px;
   height: auto;
+  margin-left: 30px;
 }
 
 .shoe-info {
-  margin-right: 100px;
+  position: relative;
+  width: 550px;
+  margin-right: 30px;
   li {
     font-size: 25px;
     margin-top: 6px;
@@ -45,28 +48,50 @@
 .edit-shoes:hover {
   border: 1px solid black;
 }
-.favourites {
+.favourites, .rent-btn {
   padding: 10px;
   border-radius: 5px;
   text-align: center;
   background-color: black;
 }
 
-.favourites a, .delete-shoes a {
+.delete-shoes a, .rent-btn a {
   color: white;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
 }
 
 .edit-shoes a {
   color: black;
-
+  font-size: 25px;
 }
 
 .delete-shoes {
   background-color: black;
 }
 
-.favourites:hover, .delete-shoes:hover {
+.favourites:hover, .delete-shoes:hover, .rent-btn:hover {
   background-color: rgba($color: rgb(82, 81, 81), $alpha: 1);
+}
+
+.wishlist {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  font-size: 25px;
+  background-color: white;
+}
+
+.orders-showpage {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.center {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.orders-heading {
+  text-align: center;
 }

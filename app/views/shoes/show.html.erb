@@ -19,25 +19,18 @@
             <li>Owner <span class="shoes-content"><%= @user.first.first_name%></span></li>
             <% favourite = Favourite.where(shoe_id: @shoe.id, user_id: current_user.id) %>
             <% if favourite == [] %>
-              <h2>Do you like this shoes?</h2>
                 <%= simple_form_for [@shoe, @favourite] do |f|%>
                   <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
                   <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
-                  <%= f.submit value: "💗" %>
+                  <%= f.submit value: "💗", style:"border: none", class:"wishlist" %>
                 <% end %>
             <% else %>
-              <li class="favourites"><%= link_to favourites_path do%>
-                <%= "This shoes is in your favourites list" %>
-                <br>
-                <%= "click here to edit" %>
-                <% end %>
-              </li>
+              <li class="wishlist"><%= link_to "❌", favourites_path %></li>
             <% end %>
 
             <br>
             <% if @shoe.user_id == current_user.id %>
               <li class="edit-shoes"><%= link_to "EDIT SHOES DETAILS", edit_shoe_path(@shoe)%></li>
-              <br>
               <li class="delete-shoes">
                 <%= link_to "DELETE SHOES",
                 shoe_path(@shoe),
@@ -45,31 +38,31 @@
                 %>
               </li>
             <% else %>
-              <%= link_to "Do you want to rent them? Click here", new_shoe_order_path(@shoe) %>
-              <br>
-              <br>
+              <li class="rent-btn"><%= link_to "Do you want to rent them? Click here", new_shoe_order_path(@shoe) %></li>
             <% end %>
           </div>
         </ul>
 
 
-        <% if @shoe.orders != [] %>
-          <h2>List of orders for <%= @shoe.name %>:</h2>
-          <ul>
-            <% @shoe.orders.each do |order| %>
-              <% user = User.where(id: order.user_id) %>
-              <% if order.shoe_id == @shoe.id %>
-              <li>Order ID: <%= order.id %>
-              <br>
-              From <%= user.first.first_name %> <%= user.first.last_name %>
-              <br>
-              Renting period: <%= order.from %> to <%= order.to %>
-              <br>
-              </li>
+        <div class="orders-showpage">
+          <% if @shoe.orders != [] %>
+            <h2 class="orders-heading">List of orders</h2>
+            <ul>
+              <% @shoe.orders.each do |order| %>
+                <% user = User.where(id: order.user_id) %>
+                <% if order.shoe_id == @shoe.id %>
+                <li><strong>Order #<%= order.id %></strong>
+                <br>
+                From: <%= user.first.first_name %> <%= user.first.last_name %>
+                <br>
+                Renting period: <%= order.from %> to <%= order.to %>
+                <br>
+                </li>
+                <% end %>
               <% end %>
-            <% end %>
-          </ul>
-        <% end %>
+            </ul>
+          <% end %>
+        </div>
         <br>
         <% if @shoe.reviews != [] %>
           <h2>List of references:</h2>
