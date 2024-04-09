@@ -1,6 +1,7 @@
 <div class="container">
   <h1>The details of <%= @shoe.name %>:</h1>
   <ul>
+
     <% if @shoe.photos %>
       <% @shoe.photos.each do |photo| %>
         <span><%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></span>
@@ -17,6 +18,8 @@
   <% favourite = Favourite.where(shoe_id: @shoe.id, user_id: current_user.id) %>
   <% if favourite == [] %>
     <h2>Do you like this shoes?</h2>
+
+
       <%= simple_form_for [@shoe, @favourite] do |f|%>
         <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
         <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
@@ -41,6 +44,7 @@
   <% end %>
   <% if @shoe.orders != [] %>
     <h2>List of orders for <%= @shoe.name %>:</h2>
+
     <ul>
       <% @shoe.orders.each do |order| %>
         <% user = User.where(id: order.user_id) %>

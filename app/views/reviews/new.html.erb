@@ -1,5 +1,7 @@
-<div class="container">
-  <h1>How do you feel about your experience?</h1>
+<div class="container-review">
+   <div class="title">
+  <h1 class="abril-fatface-regular">How do you feel about your experience?</h1>
+  </div>
   <%= simple_form_for [@order, @review] do |f| %>
     <%= f.input :order_id, :as => :hidden, :input_html => {:value => @order.id}%>
     <%= f.input :content %>
