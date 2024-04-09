@@ -1,13 +1,15 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: rgb(255, 255, 255);
-
-   background-image: url(https://sb.ecobnb.net/app/uploads/sites/3/2022/04/copertina-1.jpg);;
+  height: 45px; /* Adjust the height as desired */
+  background-image: url(https://sb.ecobnb.net/app/uploads/sites/3/2022/04/copertina-1.jpg);
+  position: sticky; /* Make navbar sticky */
+  top: 0; /* Stick navbar to the top of the screen */
+  z-index: 1000;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-
 }
 
 .navbar-lewagon .navbar-brand img {
