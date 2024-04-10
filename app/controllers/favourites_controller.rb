@@ -8,9 +8,10 @@ class FavouritesController < ApplicationController
 
   def create
     # raise
+    @shoe = Shoe.find(params[:shoe_id])
     @favourite = Favourite.new(favourite_params)
     if @favourite.save
-      redirect_to favourites_path
+      redirect_to shoe_path(@shoe)
     end
   end
 

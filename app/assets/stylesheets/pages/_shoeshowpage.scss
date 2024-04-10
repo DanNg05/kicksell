@@ -42,11 +42,11 @@
 }
 
 .edit-shoes {
-  border: 1px solid rgba($color: grey, $alpha: 0.4);
+  border: 2px solid rgba($color: grey, $alpha: 0.4);
 }
 
 .edit-shoes:hover {
-  border: 1px solid black;
+  border: 2px solid black;
 }
 .favourites, .rent-btn {
   padding: 10px;
@@ -64,6 +64,7 @@
 .edit-shoes a {
   color: black;
   font-size: 25px;
+  font-weight: bold;
 }
 
 .delete-shoes {
@@ -82,9 +83,18 @@
   background-color: white;
 }
 
-.orders-showpage {
+.orders-reviews {
+  justify-content: space-between;
+}
+
+
+.orders {
   margin-left: 0;
   margin-right: 0;
+}
+
+.orders-heading {
+  margin-left: 210px;
 }
 
 .center {
@@ -92,6 +102,41 @@
   padding-right: 0;
 }
 
-.orders-heading {
-  text-align: center;
+.order-info {
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba($color: grey, $alpha: 0.4);
+  margin-bottom: 5px;
+  margin-left: 70px;
+}
+
+.ref-reviews {
+  margin-left: 280px;
+}
+
+.reviews {
+  margin-right: 30px;
+}
+
+.review-info {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  margin-left: 70px;
+  border: 1px solid black;
+}
+
+.btn-review {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-left: 330px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-review:hover {
+  background-color: rgb(70, 69, 69);
 }

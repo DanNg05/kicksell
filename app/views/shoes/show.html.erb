@@ -38,47 +38,53 @@
                 %>
               </li>
             <% else %>
-              <li class="rent-btn"><%= link_to "Do you want to rent them? Click here", new_shoe_order_path(@shoe) %></li>
+              <li class="rent-btn"><%= link_to "RENT THEM!", new_shoe_order_path(@shoe) %></li>
             <% end %>
           </div>
         </ul>
 
+        <div class="orders-reviews d-flex">
+          <div class="orders">
+            <% if @shoe.orders != [] %>
+              <h2 class="orders-heading">List of orders</h2>
+              <ul class="orders-list">
+                <% @shoe.orders.each do |order| %>
+                  <% user = User.where(id: order.user_id) %>
+                  <% if order.shoe_id == @shoe.id %>
+                  <li class="order-info"><strong>Order #<%= order.id %></strong>
+                  <br>
+                  From: <%= user.first.first_name %> <%= user.first.last_name %>
+                  <br>
+                  Renting period: <%= order.from %> to <%= order.to %>
+                  <br>
+                  </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
 
-        <div class="orders-showpage">
-          <% if @shoe.orders != [] %>
-            <h2 class="orders-heading">List of orders</h2>
-            <ul>
-              <% @shoe.orders.each do |order| %>
-                <% user = User.where(id: order.user_id) %>
-                <% if order.shoe_id == @shoe.id %>
-                <li><strong>Order #<%= order.id %></strong>
-                <br>
-                From: <%= user.first.first_name %> <%= user.first.last_name %>
-                <br>
-                Renting period: <%= order.from %> to <%= order.to %>
-                <br>
+          <div class="reviews">
+            <% if @shoe.reviews != [] %>
+              <h2 class="ref-reviews">List of references</h2>
+              <ul>
+                <% @shoe.reviews.each do |review| %>
+                  <li class="review-info">
+                  Content: <%= review.content %>
+                  <br>
+                  Rating:
+                  <% review.rating.times do |rate| %>
+                    <%= "⭐" %>
+                  <% end %>
                 </li>
                 <% end %>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
-        <br>
-        <% if @shoe.reviews != [] %>
-          <h2>List of references:</h2>
-          <ul>
-            <% @shoe.reviews.each do |review| %>
-              <li>
-              Content: <%= review.content %>
-              <br>
-              Rating: <%= review.rating %>
-            </li>
+              </ul>
             <% end %>
-          </ul>
-        <% end %>
-        <% if @orders != [] %>
-        <%= link_to "Write your review!", new_order_review_path(@orders.last) %>
-        <% end %>
+            <% if @orders != [] %>
+            <%= link_to "WRITE REVIEW", new_order_review_path(@orders.last), class:"btn-review" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
