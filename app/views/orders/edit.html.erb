@@ -1,9 +1,19 @@
-<div class="conntainer">
-  <h1>Do you want to change your renting period? Take easy steps here!</h1>
-  <%= simple_form_for @order do |f| %>
-  <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
-  <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
-  <%= f.input :from %>
-  <%= f.input :to %>
-  <% end %>
+<div class="container">
+  <h2>Do you want to change your renting period for <%= @shoe.name %> (size: <%= @shoe.size %>)? </h2>
+  <h3>Please make the dates update here.</h3>
+  <div class="row">
+    <div class="col-6">
+    <!-- Left column content -->
+      <%= simple_form_for @order do |f| %>
+      <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
+      <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
+      <%= f.input :from %>
+      <%= f.input :to %>
+      <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="col-6">
+    <!-- Right column content -->
+    </div>
+  </div>
 </div>
