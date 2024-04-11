@@ -1,6 +1,6 @@
 <div class="shoe-show-container">
-  <div class="container">
-    <div class="row justify-content-center">
+  <div class="container min-vh-100">
+    <div class="row justify-content-center min-vh-100">
       <div class="col-12 center">
         <ul class="shoe-and-user mt-5">
           <div class="photos">
@@ -22,10 +22,14 @@
                 <%= simple_form_for [@shoe, @favourite] do |f|%>
                   <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
                   <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
-                  <%= f.submit value: "💗", style:"border: none", class:"wishlist" %>
+                  <%= f.submit "💗", style:"border: none", class:"wishlist" %>
                 <% end %>
             <% else %>
-              <li class="wishlist"><%= link_to "❌", favourites_path %></li>
+              <li class="wishlist">
+                <%= link_to favourites_path do%>
+                  <i class="fa-solid fa-heart" style="color: red"></i>
+                <% end %>
+              </li>
             <% end %>
 
             <br>
@@ -81,7 +85,9 @@
               </ul>
             <% end %>
             <% if @orders != [] %>
-            <%= link_to "WRITE REVIEW", new_order_review_path(@orders.last), class:"btn-review" %>
+            <ul>
+            <li><%= link_to "WRITE REVIEW", new_order_review_path(@orders.last), class:"btn-review" %></li>
+            </ul>
             <% end %>
           </div>
         </div>

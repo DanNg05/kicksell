@@ -6,6 +6,7 @@ gem "devise"
 gem "cloudinary"
 gem "pg_search"
 
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
@@ -50,7 +51,7 @@ gem "bootsnap", require: false
 
 gem "bootstrap", "~> 5.2"
 gem "autoprefixer-rails"
-gem "font-awesome-sass", "~> 6.1"
+gem "font-awesome-sass", "~> 6.5"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 

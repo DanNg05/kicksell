@@ -1,16 +1,33 @@
-<div class="container">
-  <h1>Your favourites list</h1>
-  <% @favourites.each do |favourite| %>
-    <% shoe = Shoe.find(favourite.shoe_id) %>
-    <% if favourite.user_id == current_user.id %>
-    <% shoe = Shoe.find(favourite.shoe_id) %>
-    <li>
-      <% if shoe.photos.first %>
-        <span><%= cl_image_tag shoe.photos.first.key, height: 300, width: 400, crop: :fill %></span>
-      <% end %>
-      <%= shoe.name %>
-    </li>
-    <% end %>
-    <%= link_to "❌", shoe_favourite_path(shoe, favourite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <% end %>
+<div class="fav-container">
+  <div class="container min-vh-100" style="background-color: white">
+      <div class="row justify-content-center">
+        <div class="col-7">
+          <h1 class="fav-heading">Your favourites list</h1>
+          <ul>
+            <% @favourites.each do |favourite| %>
+              <div class="fav-list">
+                <% shoe = Shoe.find(favourite.shoe_id) %>
+                <% if favourite.user_id == current_user.id %>
+                <% shoe = Shoe.find(favourite.shoe_id) %>
+                  <li>
+                    <% if shoe.photos.first %>
+                      <span><%= cl_image_tag shoe.photos.first.key, height: 100, width: 200, class:"rounded", crop: :fill %></span>
+                    <% end %>
+                  </li>
+                  <li class="fav-shoes">
+                    <strong>Name</strong> <span class="fav-shoe-info"><%= shoe.name %></span>
+                    <br>
+                    <strong>Size</strong> <span class="fav-shoe-info"><%= shoe.size %> US</span>
+                    <br>
+                    <strong>Price</strong> <span class="fav-shoe-info"><%= shoe.price %> AUD/day</span>
+                  </li>
+                <% end %>
+                <%= link_to "RENT THEM!", new_shoe_order_path(shoe), class:"order-btn-fav" %>
+                <%= link_to "❌", shoe_favourite_path(shoe, favourite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"remove-btn" %>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+  </div>
 </div>

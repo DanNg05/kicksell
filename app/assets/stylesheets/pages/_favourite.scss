@@ -1,0 +1,47 @@
+.fav-list {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 5px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.fav-shoe-info {
+  color: grey;
+}
+
+.fav-shoes {
+  margin-left: 10px;
+}
+
+.remove-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.fav-heading {
+  margin-left: 220px;
+}
+
+.fav-container {
+  background-color: rgba(128, 128, 128, 0.1);
+  height: calc(100vh - 40px);
+}
+
+.order-btn-fav {
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: black;
+  font-weight:600;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.order-btn-fav:hover {
+  background-color: grey;
+}
