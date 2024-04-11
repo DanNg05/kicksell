@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Your history of orders:</h1>
+  <h1>Your orders:</h1>
   <% current_user.orders.each do |order| %>
     <% shoe = Shoe.find(order.shoe_id) %>
     <li>
@@ -13,5 +13,6 @@
       <br>
       To: <%= order.to %>
     </li>
+    <%= link_to "Do you want to update the renting period?", edit_order_path(order) %>
   <% end %>
 </div>
