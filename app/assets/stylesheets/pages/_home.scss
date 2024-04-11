@@ -1,6 +1,12 @@
 // Specific CSS for your home-page
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
 
-
+ul {
+  list-style-type: none;
+}
 
 .container-story{
    display: flex;

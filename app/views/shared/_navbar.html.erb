@@ -13,10 +13,20 @@
          <nav class="navbar bg-body-tertiary">
    <div class="container-fluid">
       <a class="navbar-brand"></a>
-      <form class="d-flex" role="search">
+
+      <%# <form class="d-flex" role="search">
          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
          <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> %>
+      <%= form_with url: shoes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+
    </div>
    </nav>
 
