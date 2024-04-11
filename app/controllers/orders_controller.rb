@@ -28,11 +28,13 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @order = Order.find(params[:id])
+    @shoe = Shoe.find(@order.shoe_id)
   end
 
   def update
     @order.update(order_params)
-    redirect_to shoe_order_path(@order)
+    redirect_to user_orders_path(current_user)
   end
 
   private

@@ -1,10 +1,23 @@
 <div class="container">
-  <h1>Do you want to rent this pair of shoes? Please fill out the form</h1>
-  <%= simple_form_for [@shoe, @order] do |f|%>
-    <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
-    <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
-    <%= f.input :from %>
-    <%= f.input :to %>
-    <%= f.submit %>
+  <h2>Do you want to rent this <%= @shoe.name %> (size: <%= @shoe.size %>)? </h2>
+  <h3>Please fill out the form to select your renting period.</h3>
+  <div class="row">
+    <div class="col-6">
+    <!-- Left column content -->
+    <%= simple_form_for [@shoe, @order] do |f|%>
+      <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
+      <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
+      <%= f.input :from %>
+      <%= f.input :to %>
+      <%= f.submit %>
     <% end %>
+    </div>
+    
+    <div class="col-6">
+    <!-- Right column content -->
+    <% if @shoe.photos.first %>
+    <span><%= cl_image_tag @shoe.photos.first.key, height: 300, width: 300, crop: :fill %></span>
+    <% end %>
+    </div>
+  </div>
 </div>
