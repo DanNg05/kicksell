@@ -1,18 +1,39 @@
-<div class="container">
-  <h1>Your orders:</h1>
-  <% current_user.orders.each do |order| %>
-    <% shoe = Shoe.find(order.shoe_id) %>
-    <li>
-      Name: <%= shoe.name %>
-      <br>
-      Size: <%= shoe.size %>
-      <br>
-      Order ID: <%= order.id %>
-      <br>
-      From: <%= order.from %>
-      <br>
-      To: <%= order.to %>
-    </li>
-    <%= link_to "Do you want to update the renting period?", edit_order_path(order) %>
-  <% end %>
+<div class="my-order-container">
+  <div class="container">
+    <h1>Your orders:</h1>
+
+    <div class="row">
+      <% current_user.orders.each do |order| %>
+        <% shoe = Shoe.find(order.shoe_id) %>
+        <div class="col-8">
+          <!-- Single card for each order -->
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <!-- Order details -->
+                <div class="col-md-6">
+                  <h5 class="card-title">Order Details</h5>
+                  <p class="card-text">
+                    Name: <%= shoe.name %><br>
+                    Size: <%= shoe.size %><br>
+                    Order ID: <%= order.id %><br>
+                    From: <%= order.from %><br>
+                    To: <%= order.to %><br>
+                  </p>
+                  <!-- Link to update renting period inside the card -->
+                  <%= link_to "Do you want to update the renting period?", edit_order_path(order), class: "edit-shoes" %>
+                </div>
+                <!-- Image -->
+                <div class="col-md-6 text-center">
+                  <% if shoe.photos.any? %>
+                    <%= cl_image_tag shoe.photos.first.key, height: 150, width: 150, crop: :fill %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

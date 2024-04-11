@@ -12,8 +12,12 @@
       <%= f.submit %>
     <% end %>
     </div>
+    
     <div class="col-6">
     <!-- Right column content -->
+    <% if @shoe.photos.first %>
+    <span><%= cl_image_tag @shoe.photos.first.key, height: 300, width: 300, crop: :fill %></span>
+    <% end %>
     </div>
   </div>
 </div>

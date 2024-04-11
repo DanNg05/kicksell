@@ -48,8 +48,8 @@ class ShoesController < ApplicationController
   end
 
   def my_orders
+    @orders = current_user.orders.includes(:shoe)
   end
-
 
   def favourites
     @favourites = Favourite.all
