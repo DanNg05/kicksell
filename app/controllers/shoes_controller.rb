@@ -3,7 +3,11 @@ class ShoesController < ApplicationController
 
   def index
     # raise
+    if params[:query].present?
+      @shoes = Shoe.search_by_name_and_size(params[:query])
+    else
     @shoes = Shoe.all
+    end
   end
 
   def show
@@ -48,8 +52,8 @@ class ShoesController < ApplicationController
   end
 
   def my_orders
+    @orders = current_user.orders.includes(:shoe)
   end
-
 
   def favourites
     @favourites = Favourite.all
