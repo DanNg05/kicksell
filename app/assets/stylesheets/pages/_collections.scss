@@ -1,21 +1,16 @@
 .container-collections{
    display: flex;
    border-radius: 20px;
-   border-color: black;
    text-align: center;
    flex-direction: column;
-
    flex-wrap: wrap;
    text-emphasis-color: white;
-   padding-left: 150px;
-   padding-right: 150px;
+   padding-left: 200px;
+   padding-right: 200px;
    padding-top: 30px;
    padding-bottom: 30px;
-
    margin: 50px;
    justify-content: center;
-
-
    background-color: rgb(205, 205, 205);
    background-image: url(https://sb.ecobnb.net/app/uploads/sites/3/2022/04/copertina-1.jpg);
    background-size: 200%;
@@ -23,10 +18,7 @@
    h1 {
       color: rgb(58, 77, 2);
       text-shadow: 1px 1px 1px rgba($color: #ececec, $alpha: 0.8);
-
    }
-
-
 }
 
 title{
@@ -49,12 +41,20 @@ title{
    padding: auto;
    // list-style: none;
    justify-content: center;
- /* Or flexbox for a different layout */
    grid-gap: 4rem; /* Adjust spacing between cards */
- }
+}
 
- .card {
+.cards-collections {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   padding: auto;
+   justify-content: center;
+   grid-gap: 4rem;
+/* Adjust spacing between cards */
+}
 
+.card {
    display: flex;
    height: 300px;
    background-color: #fff;
@@ -63,14 +63,14 @@ title{
    border-radius: 5px;
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    /* Add more styles as needed (e.g., text alignment, margins) */
- }
+}
 
- .card img {
+.card img {
    width: 100%; /* Adjust width as needed */
    height: 200px; /* Adjust height as needed */
-   object-fit: cover; /* Ensures image fills container */
-   // margin-bottom: 1rem; /* Add spacing below image */
- }
+   object-fit: cover;
+  // margin-bottom: 1rem; /* Add spacing below image */
+}
 
 
 .card:hover{

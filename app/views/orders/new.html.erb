@@ -1,7 +1,5 @@
-<div class="container-sign-in">
-    <div class= "title">
-  <h1 class="abril-fatface-regular">Do you want to rent this pair of shoes? Please fill out the form</h1>
-   </div>
+<div class="container">
+  <h1>Do you want to rent this pair of shoes? Please fill out the form</h1>
   <%= simple_form_for [@shoe, @order] do |f|%>
     <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
     <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>

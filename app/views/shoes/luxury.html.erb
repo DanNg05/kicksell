@@ -3,7 +3,11 @@
   <h1 class="abril-fatface-regular">Luxury shoes are listed here:</h1>
   </div>
   <div class="cards">  <% @shoes.each do |shoe| %>
-      <li class="card">  <p>Name: <%= link_to shoe.name, shoe_path(shoe) %></p>
+      <li class="card">
+      <% if shoe.photos.first %>
+      <span><%= cl_image_tag shoe.photos.first.key, height: 300, width: 400, crop: :fill %></span>
+      <% end %>
+         <p>Name: <%= link_to shoe.name, shoe_path(shoe) %></p>
         <p>Price: <%= shoe.price %> AUD/per day</p>
       </li>
     <% end %>
