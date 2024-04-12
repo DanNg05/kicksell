@@ -7,8 +7,5 @@
 // or checkbox.
 legend ~ div.form-check:first-of-type {
   clear: left;
-  p {
-   color: rgb(245, 245, 245);
-   text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.8);
-}
+
 }

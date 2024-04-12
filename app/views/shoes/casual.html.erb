@@ -1,10 +1,17 @@
-<div class="container">
-  <h1>Casual shoes are listed here:</h1>
-  <% @shoes.each do |shoe| %>
-    <% if shoe.photos.first %>
-      <span><%= cl_image_tag shoe.photos.first.key, height: 300, width: 400, crop: :fill %></span>
-    <% end %>
-    <li>Name: <%= link_to shoe.name, shoe_path(shoe) %>, Price: <%= shoe.price %> AUD/per day</li>
+<div class="container-collections">
+      <div class= "title">
+  <h1 class="abril-fatface-regular">Casual shoes are listed here:</h1>
+  </div>
+    <div class="cards-collections"> <% @shoes.each do |shoe| %>
+    <li class="card">
+      <% if shoe.photos.first %>
+<span><%= cl_image_tag shoe.photos.first.key, height: 300, width: 400, crop: :fill %></span>
+<% end %>
+
+
+      Name: <%= link_to shoe.name, shoe_path(shoe) %>, Price: <%= shoe.price %> AUD/per day</li>
   <% end %>
+    </div>
+
   <%= link_to "Do you have shoes for rent? Click here to create your post!", new_shoe_path %>
 </div>

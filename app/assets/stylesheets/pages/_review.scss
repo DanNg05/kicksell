@@ -1,22 +1,30 @@
-.container-sign-in{
+.container-review{
    display: flex;
-   justify-content: center;
-   flex-direction: column;
+   border-radius: 20px;
+   border-color: black;
    text-align: center;
-   height: 100vh;
+   flex-direction: column;
+
    flex-wrap: wrap;
-   align-items: center;
-   background-color: rgb(74, 48, 48);
+   text-emphasis-color: white;
+padding-left: 150px;
+padding-right: 150px;
+   padding-top: 30px;
+
+   padding-bottom: 30px;
+   margin: 50px;
+   justify-content: center;
+
+   background-color: rgb(205, 205, 205);
    background-image: url(https://sb.ecobnb.net/app/uploads/sites/3/2022/04/copertina-1.jpg);
+   background-size: 200%;
+   background-position: top;
    h1 {
       color: rgb(58, 77, 2);
       text-shadow: 1px 1px 1px rgba($color: #ececec, $alpha: 0.8);
 
    }
-
 }
-
-
 
 title{
    .abril-fatface-regular {
