@@ -26,7 +26,7 @@
                 <!-- Image -->
                 <div class="col-md-6 text-center">
                   <% if shoe.photos.any? %>
-                    <%= cl_image_tag shoe.photos.first.key, height: 200, width: 400, crop: :fill %>
+                    <%= cl_image_tag shoe.photos.first.key, height: 200, width: 400, crop: :fit %>
                   <% end %>
                 </div>
               </div>
