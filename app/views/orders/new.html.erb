@@ -1,23 +1,25 @@
-<div class="container">
-  <h2>Do you want to rent this <%= @shoe.name %> (size: <%= @shoe.size %>)? </h2>
-  <h3>Please fill out the form to select your renting period.</h3>
-  <div class="row">
-    <div class="col-6">
-    <!-- Left column content -->
-    <%= simple_form_for [@shoe, @order] do |f|%>
-      <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
-      <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
-      <%= f.input :from %>
-      <%= f.input :to %>
-      <%= f.submit %>
-    <% end %>
-    </div>
-    
-    <div class="col-6">
-    <!-- Right column content -->
-    <% if @shoe.photos.first %>
-    <span><%= cl_image_tag @shoe.photos.first.key, height: 300, width: 300, crop: :fill %></span>
-    <% end %>
+<div class="new-shoe-container" style="background-color: rgba(128, 128, 128, 0.1); height:calc(100vh - 40px)">
+  <div class="container" style="background-color: white; height:100vh;">
+    <h1 class="special-font" style="text-align: center">Do you want to rent this <%= @shoe.name %> (size: <%= @shoe.size %>)? </h1>
+    <h3 style="text-align: center">Please fill out the form to select your renting period.</h3>
+    <div class="row justify-content-center">
+      <div class="col-6">
+      <!-- Left column content -->
+      <%= simple_form_for [@shoe, @order] do |f|%>
+        <%= f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id} %>
+        <%= f.input :shoe_id, :as => :hidden, :input_html => {:value => @shoe.id}%>
+        <%= f.input :from %>
+        <%= f.input :to %>
+        <%= f.submit value:"CREATE ORDER", class:"create-order-btn"%>
+      <% end %>
+      </div>
+
+      <div class="col-6">
+      <!-- Right column content -->
+      <% if @shoe.photos.first %>
+      <span><%= cl_image_tag @shoe.photos.first.key, height: 400, width: 600, crop: :fill %></span>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>

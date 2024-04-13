@@ -1,32 +1,32 @@
 <div class="my-order-container">
-  <div class="container">
-    <h1>Your orders:</h1>
+  <div class="container" style="background-color: white; height: 100%">
+    <h1 class="text-center special-font">Your orders:</h1>
 
-    <div class="row">
+    <div class="row d-flex justify-content-center">
       <% current_user.orders.each do |order| %>
         <% shoe = Shoe.find(order.shoe_id) %>
         <div class="col-8">
           <!-- Single card for each order -->
-          <div class="card">
+          <div class="card-1">
             <div class="card-body">
               <div class="row">
                 <!-- Order details -->
                 <div class="col-md-6">
-                  <h5 class="card-title">Order Details</h5>
                   <p class="card-text">
-                    Name: <%= shoe.name %><br>
-                    Size: <%= shoe.size %><br>
-                    Order ID: <%= order.id %><br>
-                    From: <%= order.from %><br>
-                    To: <%= order.to %><br>
+                    <strong style="font-size: 20px">Name</strong> <span class="myorders-shoe-info"><%= shoe.name %></span><br>
+                    <strong style="font-size: 20px">Size</strong> <span class="myorders-shoe-info"><%= shoe.size %></span><br>
+                    <strong style="font-size: 20px" >Order ID</strong> <span class="myorders-shoe-info"><%= order.id %></span><br>
+                    <strong style="font-size: 20px">From</strong> <span class="myorders-shoe-info"><%= order.from %></span><br>
+                    <strong style="font-size: 20px">To</strong> <span class="myorders-shoe-info"><%= order.to %></span><br>
                   </p>
                   <!-- Link to update renting period inside the card -->
-                  <%= link_to "Do you want to update the renting period?", edit_order_path(order), class: "edit-shoes" %>
+                  <%= link_to "UPDATE RENTING PERIOD?", edit_order_path(order), class: "myorders-edit-shoes" %>
+                  <%= link_to "CANCEL ORDER", shoe_order_path(shoe, order), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"cancel-btn" %>
                 </div>
                 <!-- Image -->
                 <div class="col-md-6 text-center">
                   <% if shoe.photos.any? %>
-                    <%= cl_image_tag shoe.photos.first.key, height: 150, width: 150, crop: :fill %>
+                    <%= cl_image_tag shoe.photos.first.key, height: 200, width: 400, crop: :fill %>
                   <% end %>
                 </div>
               </div>

@@ -1,19 +1,5 @@
-.container-shoe-edit{
-   display: flex;
-   justify-content: top;
-   flex-direction: column;
-   flex-wrap: wrap;
-   align-items: center;
-   height: calc(100vh - 40px);
-   background-image: url(https://sb.ecobnb.net/app/uploads/sites/3/2022/04/copertina-1.jpg);
 
-   h1 {
-      color: rgb(58, 77, 2);
-      text-shadow: 1px 1px 1px rgba($color: #ececec, $alpha: 0.8);
-   }
-}
-
-.edit-btn {
+.edit-btn, .create-shoes-btn, .create-order-btn, .review-btn {
    padding: 10px;
    border-radius: 5px;
    width: 100%;
@@ -24,6 +10,11 @@
    border: 2px solid rgba($color: grey, $alpha: 0.4);
 }
 
-.edit-btn:hover {
+.edit-btn:hover, .create-shoes-btn:hover, .create-order-btn:hover, .review-btn:hover {
    background-color: grey;
+}
+
+.edit-form {
+  background-color: white;
+  width: 1000px;
 }

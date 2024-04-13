@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :shoe
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   validates :from, :to, presence: true
 end

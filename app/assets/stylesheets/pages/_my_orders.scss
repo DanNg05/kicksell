@@ -1,3 +1,37 @@
 .my-order-container {
   margin-bottom: 5em;
+  background-color: rgba($color: grey, $alpha: 0.1);
+  height: calc(100vh - 40px);
+}
+.card-text {
+  margin-bottom: 10px;
+}
+
+.card-title {
+  margin-top: 10px;
+}
+
+.card-body {
+  padding: 20px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.myorders-edit-shoes, .cancel-btn {
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: black;
+  font-weight: bold;
+}
+
+.myorders-edit-shoes:hover, .cancel-btn:hover {
+  background-color: grey;
+}
+
+.myorders-shoe-info {
+  color: rgba($color: grey, $alpha: 0.8);
+  font-size: 20px;
+  font-weight: 600;
 }

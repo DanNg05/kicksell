@@ -1,12 +1,18 @@
-<div class="container">
-  <h1>Do you have shoes for rent? Add here!</h1>
-  <%= simple_form_for(@shoe) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :price, input_html: { min: 1, step: 1 } %>
-      <%= f.input :size, :collection => %w[4 5 6 7 8 9 10 11 12 13 14] %>
-      <%= f.input :category, :collection => %w[Luxury Casual Formal] %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit class:"btn btn-primary" %>
-  <% end %>
+<div class="new-shoe-container" style="background-color: rgba(128, 128, 128, 0.1); height:calc(100vh - 40px)">
+  <div class="container" style="background-color: white; height:100vh;">
+    <div class="row justify-content-center">
+      <div class="col-9">
+        <h1 class="special-font" style="text-align: center">Do you have shoes for rent? Add here!</h1>
+        <%= simple_form_for(@shoe) do |f| %>
+            <%= f.input :name %>
+            <%= f.input :description %>
+            <%= f.input :price, input_html: { min: 1, step: 1 } %>
+            <%= f.input :size, :collection => %w[4 5 6 7 8 9 10 11 12 13 14] %>
+            <%= f.input :category, :collection => %w[Luxury Casual Formal] %>
+            <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+            <%= f.submit class:"create-shoes-btn", value:"CREATE SHOES" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

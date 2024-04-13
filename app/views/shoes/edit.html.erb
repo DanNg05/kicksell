@@ -1,13 +1,17 @@
-<div class="container-shoe-edit">
-   <div class="title">
-  <h1 class="abril-fatface-regular">Need to change shoes details?</h1>
+<div class="new-shoe-container" style="background-color: rgba(128, 128, 128, 0.1); height:calc(100vh - 40px)">
+  <div class="container" style="background-color: white; height:100vh;">
+    <div class="row justify-content-center">
+      <div class="col-9">
+        <h1 class="special-font" style="text-align: center">Need to change shoes details?</h1>
+        <%= simple_form_for(@shoe) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <%= f.input :size, :collection => %w[4 5 6 7 8 9 10 11 12 13 14] %>
+          <%= f.input :category, :collection => %w[Luxury Casual Formal] %>
+          <%= f.submit class:"edit-btn", value: "EDIT SHOES" %>
+      <% end %>
+      </div>
+    </div>
   </div>
-  <%= simple_form_for(@shoe) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :price %>
-      <%= f.input :size, :collection => %w[4 5 6 7 8 9 10 11 12 13 14] %>
-      <%= f.input :category, :collection => %w[Luxury Casual Formal] %>
-      <%= f.submit class:"edit-btn", value: "EDIT SHOES" %>
-  <% end %>
 </div>

@@ -52,11 +52,12 @@ padding-right: 100px;
    box-shadow: 10px;
    background-image: url(https://sb.ecobnb.net/app/uploads/sites/3/2022/04/copertina-1.jpg);
    background-position: center;
+   background-repeat: no-repeat;
    height: 550px;
    border-radius: 20px;
    border-bottom: 20%;
    display: flex;
-   text-align: center;
+   align-items: center;
    justify-content: center;
    margin: 50px;
    // padding: auto;
@@ -65,4 +66,64 @@ padding-right: 100px;
    // border: 20px;
    flex-wrap: wrap;
    background-color: rgb(205, 205, 205);
+}
+
+.card-home {
+  display: flex;
+  height: 450px;
+  background-color: #fff;
+  border-spacing: 30px;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Add more styles as needed (e.g., text alignment, margins) */
+}
+
+.card-home img {
+  width: 100%; /* Adjust width as needed */
+  height: 380px; /* Adjust height as needed */
+  object-fit: cover;
+ // margin-bottom: 1rem; /* Add spacing below image */
+  margin-bottom: 13px;
+  border-radius: 10px;
+}
+
+
+.card-home:hover{
+  background-color: rgb(231, 231, 231);
+  color: aliceblue;
+  // opacity: 30%;
+  transform: scale(1.05);
+  transition: all 1s ease;
+}
+
+.home-btn {
+  font-size: 20px;
+  font-weight: bold;
+  color: yellow;
+  background-color: green;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.banner {
+  background-image: asset-url("gucci_shoes.png");
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 3px 3px 3px black;
 }
