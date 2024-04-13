@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/orders', to: "shoes#my_orders", as: 'user_orders'
   get "favourites", to: "shoes#favourites", as: :favourites
   resources :shoes do
-    resources :orders, only: [:new, :create]
+    resources :orders, only: [:new, :create, :destroy]
     resources :favourites, only: [:new, :create, :destroy]
     collection do
       get :casual

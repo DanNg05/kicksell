@@ -1,17 +1,21 @@
 <div class="container-collections">
-      <div class= "title">
+   <div class= "title">
   <h1 class="abril-fatface-regular">Casual shoes are listed here:</h1>
   </div>
-    <div class="cards-collections"> <% @shoes.each do |shoe| %>
-    <li class="card">
-      <% if shoe.photos.first %>
-<span><%= cl_image_tag shoe.photos.first.key, height: 300, width: 400, crop: :fill %></span>
-<% end %>
-
-
-      Name: <%= link_to shoe.name, shoe_path(shoe) %>, Price: <%= shoe.price %> AUD/per day</li>
-  <% end %>
-    </div>
-
-  <%= link_to "Do you have shoes for rent? Click here to create your post!", new_shoe_path %>
+  <div class="cards">
+    <ul>
+      <% @shoes.each do |shoe| %>
+        <li class="card-collection">
+        <% if shoe.photos.first %>
+        <span><%= cl_image_tag shoe.photos.first.key, height: 400, width: 600, crop: :fit %></span>
+        <% end %>
+        <div class="shoe-info-collections">
+          <p class="collection-shoe-p"><strong>Name</strong> <span><%= link_to shoe.name, shoe_path(shoe), class:"grey-color", style:"font-weight: bold" %></span></p>
+          <p class="collection-shoe-p"><strong>Price</strong> <span class="grey-color"><%= shoe.price %> AUD/per day</span></p>
+        </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to "CREATE POST!", new_shoe_path, class:"create-btn" %>
 </div>

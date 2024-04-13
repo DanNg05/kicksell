@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to shoe_path(@shoe.first)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

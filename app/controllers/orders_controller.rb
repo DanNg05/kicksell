@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :order_list, only: [:show, :edit, :update]
+  before_action :order_list, only: [:show, :edit, :update, :destroy]
   def index
     @orders = Order.all
     @shoe = Shoe.find(params[:shoe_id])
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to shoe_path(@shoe)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,6 +37,11 @@ class OrdersController < ApplicationController
     redirect_to user_orders_path(current_user)
   end
 
+
+  def destroy
+    @order.destroy
+    redirect_to my_orders_path, status: :see_other
+  end
   private
 
   def order_params

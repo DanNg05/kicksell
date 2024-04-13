@@ -8,8 +8,8 @@
    align-items: center;
    background-color: rgb(74, 48, 48);
    background-image: url(https://sb.ecobnb.net/app/uploads/sites/3/2022/04/copertina-1.jpg);
-   h1 {
-      color: rgb(58, 77, 2);
+   h2 {
+      color: white;
       text-shadow: 1px 1px 1px rgba($color: #ececec, $alpha: 0.8);
 
    }
@@ -24,4 +24,16 @@ title{
       font-weight: 400;
       font-style: normal;
     }
+}
+
+.form-inputs {
+  color: white;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px black;
+}
+
+.sign-in-btn {
+  font-size: 30px;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 }

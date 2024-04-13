@@ -1,11 +1,17 @@
 <div class="container-review">
-   <div class="title">
-  <h1 class="abril-fatface-regular">How do you feel about your experience?</h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-9">
+        <div class="title">
+        <h1 class="abril-fatface-regular">How do you feel about your experience?</h1>
+        </div>
+        <%= simple_form_for [@order, @review] do |f| %>
+          <%= f.input :order_id, :as => :hidden, :input_html => {:value => @order.id}%>
+          <%= f.input :content %>
+          <%= f.input :rating, :collection => %w[1 2 3 4 5] %>
+          <%= f.submit value:"CREATE REVIEW", class:"review-btn" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <%= simple_form_for [@order, @review] do |f| %>
-    <%= f.input :order_id, :as => :hidden, :input_html => {:value => @order.id}%>
-    <%= f.input :content %>
-    <%= f.input :rating, :collection => %w[1 2 3 4 5] %>
-    <%= f.submit %>
-  <% end %>
 </div>

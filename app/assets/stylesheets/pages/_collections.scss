@@ -32,16 +32,20 @@ title{
 //    color: rgb(58, 77, 2);
 //    text-shadow: 1px 1px 1px rgba($color: #ececec, $alpha: 0.8);
 
-
+.special-font {
+  font-family: "Abril Fatface", serif;
+      font-weight: 400;
+      font-style: normal;
+}
 
 .cards {
    display: flex;
    flex-wrap: wrap;
    flex-direction: column;
    padding: auto;
-   // list-style: none;
    justify-content: center;
    grid-gap: 4rem; /* Adjust spacing between cards */
+   width: 1600px;
 }
 
 .cards-collections {
@@ -63,6 +67,7 @@ title{
    border-radius: 5px;
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
    /* Add more styles as needed (e.g., text alignment, margins) */
+   margin-left: 400px;
 }
 
 .card img {
@@ -79,4 +84,49 @@ title{
    // opacity: 30%;
    transform: scale(1.05);
    transition: all 1s ease;
+}
+
+.card-collection {
+  background-color: white;
+  margin-bottom: 10px;
+  width: 1200px;
+  margin-left: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 400px;
+}
+
+.card-collection:hover {
+  background-color: rgb(231, 231, 231);
+   // opacity: 30%;
+   transform: scale(1.05);
+   transition: all 1s ease;
+}
+
+.shoe-info-collections {
+  margin-right: 200px;
+}
+
+.grey-color {
+  color: grey;
+}
+
+.collection-shoe-p {
+  font-size: 25px;
+}
+
+.create-btn {
+  padding: 10px;
+  font-size: 20px;
+  background-color: rgb(43, 136, 43);
+  color: yellow;
+  width: 200px;
+  border-radius: 5px;
+  margin-left: 930px;
+  font-weight: 800;
+}
+
+.create-btn:hover {
+  background-color: green;
 }

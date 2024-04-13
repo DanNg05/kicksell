@@ -6,7 +6,7 @@
           <div class="photos">
             <% if @shoe.photos %>
               <% @shoe.photos.each do |photo| %>
-                <span class="mt-3"><%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "shoe-image" %></span>
+                <span class="mt-3"><%= cl_image_tag photo.key, height: 300, width: 400, crop: :fit, class: "shoe-image" %></span>
               <% end %>
             <% end %>
           </div>
@@ -26,9 +26,7 @@
                 <% end %>
             <% else %>
               <li class="wishlist">
-                <%= link_to favourites_path do%>
-                  <i class="fa-solid fa-heart" style="color: red"></i>
-                <% end %>
+                <%= link_to "❌", favourites_path%>
               </li>
             <% end %>
 
@@ -43,6 +41,15 @@
               </li>
             <% else %>
               <li class="rent-btn"><%= link_to "RENT THEM!", new_shoe_order_path(@shoe) %></li>
+              <% if @shoe.category == "Luxury" %>
+                <li class="back-btn"><%= link_to "BACK TO YOUR COLLECTION", luxury_shoes_path, class:"white-back-btn" %></li>
+              <% elsif @shoe.category == "Casual" %>
+                <li class="back-btn"><%= link_to "BACK TO YOUR COLLECTION", casual_shoes_path, class:"white-back-btn" %></li>
+              <% elsif @shoe.category == "Formal"%>
+                <li class="back-btn"><%= link_to "BACK TO YOUR COLLECTION", formal_shoes_path, class:"white-back-btn" %></li>
+              <% else %>
+                <li class="back-btn"><%= link_to "BACK TO YOUR COLLECTION", shoes_path, class:"white-back-btn" %></li>
+              <% end %>
             <% end %>
           </div>
         </ul>

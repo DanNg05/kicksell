@@ -32,7 +32,7 @@ class ShoesController < ApplicationController
     if @shoe.save
       redirect_to shoe_path(@shoe)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
